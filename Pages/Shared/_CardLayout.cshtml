@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@ViewData["Title"] - kutuphaneli.net</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/kutuphaneli.net.styles.css" asp-append-version="true" />
+</head>
+<body>
+
+        <div class="bg-secondary text-white p-3">
+            <div class="container">
+
+                <span class="navbar-brand">StoreApp</span>
+            </div>
+
+        </div>
+        <div class="container my-3">
+        @RenderBody()
+
+
+        </div>
+   
+  
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

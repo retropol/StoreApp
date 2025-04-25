@@ -1,0 +1,52 @@
+﻿@page
+@model WebLayer.Pages.CardModel
+@{
+}
+<h2>Sepet</h2>
+
+<table class="table table-bordered table-striped">
+    <thead>
+
+        <tr>
+            <th scope="col">Ürün Adı</th>
+            <th scope="col">Ürün Fiyatı</th>
+            <th scope="col">Adet</th>
+            <th scope="col">Toplam Fiyat</th>
+            <th scope="col">İşlem</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Card.CardItems ?? new List<CardItem>())
+        {
+            <tr>
+                <td>@item.Product.Name</td>
+                <td>@item.Product.Price TL</td>
+                <td>@item.Quantity</td>
+                <td>@(item.Product.Price * item.Quantity) TL</td>
+                <td>
+                    <form asp-page="/Card" method="post" asp-page-handler="Remove">
+                        <input type="hidden"  name="productId" value="@item.Product.Id" />
+                        <button type="submit" class="btn btn-outline-danger btn-sm pull-right">Sepetten Çıkar</button>
+                    </form>
+
+                </td>
+               
+              
+            </tr>
+        }
+        </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3" class="text-end">Toplam Fiyat:</td>
+            <td>@Model.Card.CalculateTotalPrice() TL</td>
+            
+        </tr>
+
+
+
+</table>
+
+
+<div>
+    <a asp-page="/Products" class="btn btn-outline-secondary">Alışverişe Devam Et</a>
+</div>
